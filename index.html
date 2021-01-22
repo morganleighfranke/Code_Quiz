@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Coding Quiz</title>
+</head>
+
+<body>
+    <container>
+        <div id="start-page">
+            <a href="./highscores.html">View High Scores</a>
+            <div class="countdown">
+                <!-- add in css that makes this float to the right -->
+                <p>"time remaining: "</p>
+            </div>
+            <!-- add in css that makes h1 big and bold, and then center the text and button below  -->
+            <!-- make this div dissapear when button pressed -->
+            <div id="startingContent">
+                <h1>Coding Quiz Challenge</h1>
+                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+                    answers
+                    will penalize your score/time by ten seconds!</p>
+                <button type="button" class="btn btn-outline-success" id="start-Quiz-Btn">Start Quiz</button>
+            </div>
+        </div>
+
+        <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Initials:</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit-Score">Submit</button>
+          </form>
+
+
+
+
+
+
+
+
+
+
+        <script src="./assets/Js/script.js"></script>
+    </container>
+</body>
+
+</html>
