@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/CSS/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <title>Coding Quiz</title>
@@ -11,44 +12,89 @@
 
 <body>
     <container>
-        <div id="start-page">
-            <a href="./highscores.html">View High Scores</a>
-            <h2 id="countdown"></h2>
-            <!-- add in css that makes h1 big and bold, and then center the text and button below  -->
-            <!-- make this div dissapear when button pressed -->
-            <div id="starting-content">
-                <h1>Coding Quiz Challenge</h1>
-                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
-                    answers
-                    will penalize your score/time by ten seconds!</p>
-                <button type="button" class="btn btn-outline-success" id="start-Quiz-Btn">Start Quiz</button>
+
+        <a href="./highscores.html">View High Scores</a>
+        <h2 id="countdown"></h2>
+        <div id="quiz-screen">
+            <div class="row quiz-area active" id="quiz-start">
+                <h1>Coding Quiz</h1>
+                <div class="col-xs-0 cold-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                    <p>Try to answer the following code related questions before the time runs out! Each incorrect
+                        answer will reduce the amount of time by 10 seconds.
+                    </p>
+                    <button type="button" class="btn btn-outline-primary" id="start-Quiz-Btn">Start Quiz</button>
+                </div>
+                <div class="col-xs-0 col-md-3"></div>
+            </div>
+            <div class=hidden id="q1">
+                <h1>Question 1:</h1>
+                <div class="col-xs-0 cold-md-3"></div>
+                <div>
+                    <p>Commonly used data types DO NOT include:</p>
+                    <button type="button" class="btn btn-outline-primary inccorect hidden" id = "button1">strings</button>
+                    <button type="button" class="btn btn-outline-secondary incorrect button1" id = "button2">booleans</button>
+                    <button type="button" class="btn btn-outline-success correct button1" id = "button3">alerts</button>
+                    <button type="button" class="btn btn-outline-danger incorrect button1" id = "button4">numbers</button>
+                </div>
+            </div>
+            <div class="hidden" id="q2">
+                <h1>Question 2:</h1>
+                <div class="col-xs-0 cold-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                    <p>The condition in an if / else statement is enclosed within ____.</p>
+                    <button type="button" class="btn btn-outline-primary inccorect" id="button2-1">quotes</button>
+                    <button type="button" class="btn btn-outline-secondary incorrect" id="button2-2">curly brackets</button>
+                    <button type="button" class="btn btn-outline-success correct" id="button2-3">parentheses</button>
+                    <button type="button" class="btn btn-outline-danger incorrect" id="button2-4">square brackets</button>
+                </div>
+            </div>
+            <div class="hidden" id="q3">
+                <h1>Question 3:</h1>
+                <div class="col-xs-0 cold-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                    <p>Arrays in JavaScript can be used to store ____.</p>
+                    <button type="button" class="btn btn-outline-primary inccorect" id="button3-1">numbers and strings</button>
+                    <button type="button" class="btn btn-outline-secondary incorrect" id="button3-2">other arrays</button>
+                    <button type="button" class="btn btn-outline-success incorrect" id="button3-3">booleans</button>
+                    <button type="button" class="btn btn-outline-danger correct" id="button3-4">all of the above</button>
+                </div>
+            </div>
+            <div class="hidden" id="q4">
+                <h1>Question 4:</h1>
+                <div class="col-xs-0 cold-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                    <p>String values must be enclosed within ____ when being assigned to variables.</p>
+                    <button type="button" class="btn btn-outline-primary inccorect" id="button4-1">commas</button>
+                    <button type="button" class="btn btn-outline-secondary incorrect" id="button4-2">curly brackets</button>
+                    <button type="button" class="btn btn-outline-success correct" id="button4-3">quotes</button>
+                    <button type="button" class="btn btn-outline-danger incorrect" id="button4-4">parentheses</button>
+                </div>
+            </div>
+            <div class="hidden" id="q5">
+                <h1>Question 5:</h1>
+                <div class="col-xs-0 cold-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                    <p>A very useful tool used during development and debugging for printing content to the debugger
+                        is:</p>
+                    <button type="button" class="btn btn-outline-primary inccorect" id="button5-1">JavaScript</button>
+                    <button type="button" class="btn btn-outline-secondary incorrect" id="button5-2">terminal / bash</button>
+                    <button type="button" class="btn btn-outline-success incorrect" id="button5-3">for loops</button>
+                    <button type="button" class="btn btn-outline-danger correct" id="button5-4">console.log</button>
+                </div>
             </div>
         </div>
-
-        <!-- <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Initials:</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <form class="form-inline hidden" id="highscoreForm">
+            <div class="form-group mb-2">
+              <label for="staticEmail2" class="sr-only">Email</label>
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Enter Your Initials:">
             </div>
-            <button type="submit" class="btn btn-primary" id="submit-Score">Submit</button>
-          </form> -->
-
-          <div id = "first-question" ></div>
-          <div id = "second-question"></div>
-          <div id = "third-question"></div>
-          <div id = "fourth-question"></div>
-          <div id = "fifth-question"></div>
-
-          <div id="question-title"></div>
-          <!-- or could be a button -->
-          <div id="choice-1"></div>
-          <div id="choice-2"></div>
-          <div id="choice-3"></div>
-          <div id="choice-4"></div>
-          
-
-
-
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="inputPassword2" class="sr-only">Your Initials Here</label>
+              <input type="password" class="form-control" id="inputPassword2" placeholder="initials">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit Your Highscore</button>
+          </form>
         <script src="./assets/Js/script.js"></script>
     </container>
 </body>

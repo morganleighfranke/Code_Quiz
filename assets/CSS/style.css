@@ -1,0 +1,11 @@
+/* .active {
+    opacity: 0;
+} */
+
+.hidden {
+    display: none;
+}
+
+form.hidden {
+    display: none;
+}
