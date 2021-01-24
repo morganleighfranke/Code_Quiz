@@ -14,47 +14,22 @@
 
 var startButton = document.getElementById("start-Quiz-Btn"); //accesses start button on html page
 
-var submitScore = document.getElementById("submit-Score"); //form to sumbit score into 
-
-var timerEl = document.getElementById("countdown");
-
-var questionOne = document.getElementById("q1");
-var questionTwo = document.getElementById("q2");
-var questionThree = document.getElementById("q3");
-var questionFour = document.getElementById("q4");
-var questionFive = document.getElementById("q5");
+var timeEl = document.getElementById("countdown");
+var secondsLeft = 75;
 
 
 
+function setTime(){
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timeEl.textContent = secondsLeft + " seconds until game over";
 
-//functions
-
-//this will start when the start button on start page is clicked
-//this will start at 75 and end at 0
-//10 seconds will be deducted if an answer is wrong
-//when clock hits 0 the quiz is over and goes to the gane is over text
-function startTimer() {
-    var timeLeft = 75;
-    //setInterval method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function () {
-
-        // //get text on screen
-        if (timeLeft > 1) {
-            timerEl.textContent = timeLeft + " seconds remaining";
-            timeLeft--;
-        } else if (timeLeft === 1) {
-            timerEl.textContent = timeLeft + " second remaining";
-            timeleft--;
-        } else {
-            timerEl.textContent = " ";
-            clearInterval(setInterval);
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            timeEl.textContent = "Game Over!";
         }
+        //if last question answered, 
     }, 1000);
-
-
-
-    //if answer is wrong deduct 10 seconds from time left
-    //when clock hits 0 go to game is over page with submit score
 }
 
 //this will start when the start button on start page is clicked
@@ -63,9 +38,14 @@ function startTimer() {
 //when clock hits 0 the quiz is over and goes to the gane is over text
 
 
+
+//functions
+
+
 function startQuiz() {
     //when quiz starts, start timer
-    startTimer();
+    //startTimer();
+    setTime();
     //load question 1 function
     //q1();
     //make starter text dissapear
@@ -88,12 +68,14 @@ function callquestion1(){
 
     var button1 = document.getElementById("button1");
     button1.addEventListener("click", function() {
+          //take away 10 from timer
         callQuestion2();
         q1.setAttribute("style", "display: none");
     });
 
     var button2 = document.getElementById("button2");
     button2.addEventListener("click", function() {
+          //take away 10 from timer
         callQuestion2();
         q1.setAttribute("style", "display: none");
     });
@@ -106,6 +88,7 @@ function callquestion1(){
 
     var button4 = document.getElementById("button4");
     button4.addEventListener("click", function() {
+          //take away 10 from timer
         callQuestion2();
         q1.setAttribute("style", "display: none");
     });
@@ -118,12 +101,14 @@ function callQuestion2(){
 
     var button1 = document.getElementById("button2-1");
     button1.addEventListener("click", function() {
+        //take away 10 from the timer
         callQuestion3();
         q2.setAttribute("style", "display: none");
     });
 
     var button2 = document.getElementById("button2-2");
     button2.addEventListener("click", function() {
+        //take away 10 from the timer
         callQuestion3();
         q2.setAttribute("style", "display: none");
     });
@@ -132,10 +117,12 @@ function callQuestion2(){
     button3.addEventListener("click", function() {
         callQuestion3();
         q2.setAttribute("style", "display: none");
+
     });
 
     var button4 = document.getElementById("button2-4");
     button4.addEventListener("click", function() {
+          //take away 10 from the timer
         callQuestion3();
         q2.setAttribute("style", "display: none");
     });
@@ -148,18 +135,21 @@ function callQuestion3(){
 
     var button1 = document.getElementById("button3-1");
     button1.addEventListener("click", function() {
+          //take away 10 from the timer
         callQuestion4();
         q3.setAttribute("style", "display: none");
     });
 
     var button2 = document.getElementById("button3-2");
     button2.addEventListener("click", function() {
+          //take away 10 from the timer
         callQuestion4();
         q3.setAttribute("style", "display: none");
     });
 
     var button3 = document.getElementById("button3-3");
     button3.addEventListener("click", function() {
+          //take away 10 from the timer
         callQuestion4();
         q3.setAttribute("style", "display: none");
     });
@@ -178,12 +168,14 @@ function callQuestion4(){
 
     var button1 = document.getElementById("button4-1");
     button1.addEventListener("click", function() {
+          //take away 10 from the timer
         callQuestion5();
         q4.setAttribute("style", "display: none");
     });
 
     var button2 = document.getElementById("button4-2");
     button2.addEventListener("click", function() {
+          //take away 10 from the timer
         callQuestion5();
         q4.setAttribute("style", "display: none");
     });
@@ -196,6 +188,7 @@ function callQuestion4(){
 
     var button4 = document.getElementById("button4-4");
     button4.addEventListener("click", function() {
+          //take away 10 from the timer
         callQuestion5();
         q4.setAttribute("style", "display: none");
     });
@@ -208,18 +201,21 @@ function callQuestion5(){
 
     var button1 = document.getElementById("button5-1");
     button1.addEventListener("click", function() {
+          //take away 10 from the timer
         finalScore();
         q5.setAttribute("style", "display: none");
     });
 
     var button2 = document.getElementById("button5-2");
     button2.addEventListener("click", function() {
+          //take away 10 from the timer
         finalScore();
         q5.setAttribute("style", "display: none");
     });
 
     var button3 = document.getElementById("button5-3");
     button3.addEventListener("click", function() {
+          //take away 10 from the timer
         finalScore();
         q5.setAttribute("style", "display: none");
     });
@@ -232,6 +228,8 @@ function callQuestion5(){
 }
 
 function finalScore(){
+    var yourScore = "";
+
     var form = document.getElementById("highscoreForm");
     form.setAttribute("style", "display: inline");
     document.body.appendChild(form);
