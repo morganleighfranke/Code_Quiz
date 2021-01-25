@@ -18,7 +18,6 @@ var timeEl = document.getElementById("countdown");
 var secondsLeft = 75;
 var timerInterval;
 
-var highscores = [];
 
 
 function setTime(){
@@ -110,6 +109,7 @@ function callQuestion2(){
     var button1 = document.getElementById("button2-1");
     button1.addEventListener("click", function() {
         //take away 10 from the timer
+        secondsLeft = secondsLeft - 10;
         callQuestion3();
         q2.setAttribute("style", "display: none");
     });
@@ -117,6 +117,7 @@ function callQuestion2(){
     var button2 = document.getElementById("button2-2");
     button2.addEventListener("click", function() {
         //take away 10 from the timer
+        secondsLeft = secondsLeft - 10;
         callQuestion3();
         q2.setAttribute("style", "display: none");
     });
@@ -131,6 +132,7 @@ function callQuestion2(){
     var button4 = document.getElementById("button2-4");
     button4.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         callQuestion3();
         q2.setAttribute("style", "display: none");
     });
@@ -144,6 +146,7 @@ function callQuestion3(){
     var button1 = document.getElementById("button3-1");
     button1.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         callQuestion4();
         q3.setAttribute("style", "display: none");
     });
@@ -151,6 +154,7 @@ function callQuestion3(){
     var button2 = document.getElementById("button3-2");
     button2.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         callQuestion4();
         q3.setAttribute("style", "display: none");
     });
@@ -158,6 +162,7 @@ function callQuestion3(){
     var button3 = document.getElementById("button3-3");
     button3.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         callQuestion4();
         q3.setAttribute("style", "display: none");
     });
@@ -177,6 +182,7 @@ function callQuestion4(){
     var button1 = document.getElementById("button4-1");
     button1.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         callQuestion5();
         q4.setAttribute("style", "display: none");
     });
@@ -184,6 +190,7 @@ function callQuestion4(){
     var button2 = document.getElementById("button4-2");
     button2.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         callQuestion5();
         q4.setAttribute("style", "display: none");
     });
@@ -197,6 +204,7 @@ function callQuestion4(){
     var button4 = document.getElementById("button4-4");
     button4.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         callQuestion5();
         q4.setAttribute("style", "display: none");
     });
@@ -210,6 +218,7 @@ function callQuestion5(){
     var button1 = document.getElementById("button5-1");
     button1.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         finalScore();
         q5.setAttribute("style", "display: none");
     });
@@ -217,6 +226,7 @@ function callQuestion5(){
     var button2 = document.getElementById("button5-2");
     button2.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         finalScore();
         q5.setAttribute("style", "display: none");
     });
@@ -224,6 +234,7 @@ function callQuestion5(){
     var button3 = document.getElementById("button5-3");
     button3.addEventListener("click", function() {
           //take away 10 from the timer
+          secondsLeft = secondsLeft - 10;
         finalScore();
         q5.setAttribute("style", "display: none");
     });
@@ -238,27 +249,51 @@ function callQuestion5(){
 function finalScore(){
     yourScore = secondsLeft;
     clearInterval(timerInterval);
-
-    var form = document.getElementById("highscoreForm");
+    //storeHighscores();
+    var form = document.getElementById("high-score-Form");
     form.setAttribute("style", "display: inline");
     document.body.appendChild(form);
-console.log(yourScore);
-
+    
 }
 
 var yourScore;
+//var initials = "Dan";
+var highscores = [];
+console.log(highscores);
 
-
-function storeHighscores(){
-//get the values from high score and initials 
-    var getScore;
-    //var getInitials = 
-//put them into the array with .push the final time and the intials submited in a form of of an object. when hit enter push object into array, push initials and {initials: variable, score: variable}
-//can update this array to update highscores page
-//after push into an array then 
-
-
+if (localStorage.getItem("highscores")) {
+highscores = JSON.parse(localStorage.getItem("highscores"));
 }
+
+// var hshtml = document.getElementById("hold-highscores");
+
+// hshtml = JSON.parse(localStorage.getItem("highscores"));
+
+function storeHighscores(score, initials){
+//get the values from high score and initials    
+var getScore = {
+        score: score,
+        initials: initials
+    }
+
+    highscores.push(getScore);
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    console.log(getScore);
+}
+
+//submit button variables
+var submitButton = document.getElementById("save");
+
+submitButton.addEventListener("click", getInitials);
+
+function getInitials(event) {
+    event.preventDefault();
+    var formText = document.getElementById("initials").value;
+    var savedScore = secondsLeft;
+    storeHighscores(savedScore, formText);
+}
+
+
 
 //function to store information entered into form locally and then render it onto the highsores html page
 
@@ -272,23 +307,6 @@ function storeHighscores(){
 
 
 //when press submit button it takes you to highscores html with the sved score showed 
-
-
-
-        // function finalScore() {
-
-        //     var score = ""; //what time is left on timer
-        //     //after the last question is answered, your final score shows up on the page
-        //     //the final score is the amount of time left on the timer
-        //     //this final score is saved locally when entered into the form with initials and submitted
-        //     //when saved locally, it appears on the highscore.html page
-        // }
-
-        // function highScore() {
-        //     //this function will show all finalScores on page that were saved locally, and when refreshed they stay on page
-        //     //there is a go back button that will take you to the start code page (don't know if this goes here or on html page)
-        //     //there is a clear high scores button that erases the finalScore stored locally and takes away from page
-        // }
 
 
 
