@@ -295,6 +295,8 @@ function getInitials(event) {
 
 
 
+
+
 //function to store information entered into form locally and then render it onto the highsores html page
 
 
