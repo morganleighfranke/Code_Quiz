@@ -5,13 +5,13 @@ This is a timed quiz, with five questions about coding. When you get an answer w
 # Screenshot
 
 This is one of five questions
-![Alt text](assets/images/questions.png?raw=true "Code Quiz screenshot)
+![Alt text](assets/images/questions.png?raw=true "Code Quiz screenshot")
 
 This is the form to enter your initials to store your score
-![Alt text](assets/images/form.png?raw=true "Code Quiz screenshot)
+![Alt text](assets/images/form.png?raw=true "Code Quiz screenshot")
 
 THis is the local storage that saves your score with your intials into an array
-![Alt text](assets/images/localstorage.png?raw=true "Code Quiz screenshot)
+![Alt text](assets/images/localstorage.png?raw=true "Code Quiz screenshot")
 
 # Link
 https://morganleighfranke.github.io/Code_Quiz/
