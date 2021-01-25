@@ -16,11 +16,13 @@ var startButton = document.getElementById("start-Quiz-Btn"); //accesses start bu
 
 var timeEl = document.getElementById("countdown");
 var secondsLeft = 75;
+var timerInterval;
 
+var highscores = [];
 
 
 function setTime(){
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         secondsLeft--;
         timeEl.textContent = secondsLeft + " seconds until game over";
 
@@ -40,6 +42,8 @@ function setTime(){
 
 
 //functions
+
+
 
 
 function startQuiz() {
@@ -69,13 +73,16 @@ function callquestion1(){
     var button1 = document.getElementById("button1");
     button1.addEventListener("click", function() {
           //take away 10 from timer
-        callQuestion2();
+          secondsLeft = secondsLeft - 10;
+        //callQuestion2();
+        finalScore();
         q1.setAttribute("style", "display: none");
     });
 
     var button2 = document.getElementById("button2");
     button2.addEventListener("click", function() {
           //take away 10 from timer
+          secondsLeft = secondsLeft - 10;
         callQuestion2();
         q1.setAttribute("style", "display: none");
     });
@@ -89,6 +96,7 @@ function callquestion1(){
     var button4 = document.getElementById("button4");
     button4.addEventListener("click", function() {
           //take away 10 from timer
+          secondsLeft = secondsLeft - 10;
         callQuestion2();
         q1.setAttribute("style", "display: none");
     });
@@ -228,14 +236,42 @@ function callQuestion5(){
 }
 
 function finalScore(){
-    var yourScore = "";
+    yourScore = secondsLeft;
+    clearInterval(timerInterval);
 
     var form = document.getElementById("highscoreForm");
     form.setAttribute("style", "display: inline");
     document.body.appendChild(form);
+console.log(yourScore);
 
 }
 
+var yourScore;
+
+
+function storeHighscores(){
+//get the values from high score and initials 
+    var getScore;
+    //var getInitials = 
+//put them into the array with .push the final time and the intials submited in a form of of an object. when hit enter push object into array, push initials and {initials: variable, score: variable}
+//can update this array to update highscores page
+//after push into an array then 
+
+
+}
+
+//function to store information entered into form locally and then render it onto the highsores html page
+
+
+
+
+
+
+
+
+
+
+//when press submit button it takes you to highscores html with the sved score showed 
 
 
 
@@ -261,7 +297,7 @@ function finalScore(){
         //event listeners
         //clear high scoresscores
         //startquiz btn
-        startButton.addEventListener("click", startQuiz);
+startButton.addEventListener("click", startQuiz);
 //go back button
 //form to enter initials and submit
 //submitScore.addEventListener("click", highScore)
